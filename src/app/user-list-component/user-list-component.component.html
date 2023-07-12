@@ -1,0 +1,37 @@
+
+<section class="container-sm">
+    <h2 class="text-center m-5">Listado de usuarios</h2>
+    <div class="alert alert-warning text-center" role="alert" *ngIf="usuarios.length == 0">
+      <h4>No hay usuarios creados</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="usuarios.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios; let indice = index">
+            <th scope="row">{{ indice + 1 }}</th>
+            <td>{{ usuario.name }}</td>
+            <td>{{ usuario.mail }}</td>
+            <td>{{ usuario.phone }}</td>
+            <td>{{ usuario.address }}</td>
+            <td><button type="button" class="btn btn-success" (click)="editUser(usuario)">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteUser(usuario)">Eliminar</button></td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <div>
+        <button type="button" class="btn btn-dark" (click)="openForm()">Agregar usuario</button>
+    </div>
+</section>
